@@ -1,35 +1,27 @@
-export enum ShopActionType {
-    ADD = 'add',
-    REMOVE = 'remove',
-}
+import { Product } from "../../../models/Product";
+
+  export enum ShopActionType {
+    ADD = 'addProduct',
+    REMOVE = 'removeProduct',
+    UPDATE = 'updateTotal',
+  }
   
-export type ShopAction = {
+  export type ShopAction = {
     type: ShopActionType;
-    payload: [];
-};
-
-export type ShopTotal = {
-    type: ShopActionType;
-    payload: number;
-}
-
-export const add = (products: []): ShopAction => ({
-    type: ShopActionType.ADD,
-    payload: products,
-});
-
-export const remove = (products: []): ShopAction => ({
-    type: ShopActionType.REMOVE,
-    payload: products,
-});
-
-export const addPrice = (total: number): ShopTotal => ({
-    type: ShopActionType.ADD,
-    payload: total,
-});
-
-export const minusPrice = (total: number): ShopTotal => ({
-    type: ShopActionType.REMOVE,
-    payload: total,
-});
+    payload: any;
+  };
   
+  export const addProduct = (productItem: Product): ShopAction => ({
+    type: ShopActionType.ADD,
+    payload: productItem,
+  });
+  
+  export const removeProduct = (productItem: Product): ShopAction => ({
+    type: ShopActionType.REMOVE,
+    payload: productItem,
+  });
+
+  export const updateTotal = (total: number): ShopAction => ({
+    type: ShopActionType.UPDATE,
+    payload: total,
+  });

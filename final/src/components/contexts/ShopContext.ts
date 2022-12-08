@@ -1,8 +1,4 @@
-import { createContext } from 'react';
+import { createContext } from "react";
+import { ShopState, initialState } from '../reducers/cart';
 
-export const initialState = {
-  total: 0,
-  products: [],
-};
-
-export const CounterContext = createContext(initialState);
+export const ShopContext = createContext<ShopState>(initialState);
