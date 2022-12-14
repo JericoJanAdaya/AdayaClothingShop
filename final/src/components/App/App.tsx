@@ -2,6 +2,7 @@ import { Link, Route, Routes } from "react-router-dom";
 import { LinksWrapper, TitleWrapper, Wrapper } from "./App.styled";
 
 import { Cart } from "../Cart";
+import { Wishlist } from "../Wishlist";
 import { Products } from "../Products";
 import { ShopContext } from "../contexts/ShopContext";
 import { useReducer } from "react";
@@ -49,10 +50,12 @@ export const App = () => {
         <LinksWrapper>
           <Link to="/">Home</Link>
           <Link to="/cart">Cart</Link>
+          <Link to="/wishlist">Wishlist</Link>
         </LinksWrapper>
         <Routes>
           <Route path="/" element={<Products />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/wishlist" element={<Wishlist />} />
         </Routes>
       </Wrapper>
     </ShopContext.Provider>
