@@ -6,7 +6,7 @@ import { Product } from '../../models';
 import { ShopContext} from '../contexts/ShopContext';
 
 export const ProductCard = ({ name, imageUrl, price }: Product) => {
-  const {products, addToCart, removeItem} = useContext(ShopContext);
+  const {wishlist, products, addToCart, removeItem, removeWishlist, addWishlist} = useContext(ShopContext);
   const [isInCart, setIsInCart] = useState(false);
   const [isInWish, setIsInWish] = useState(false);
   
@@ -22,7 +22,7 @@ export const ProductCard = ({ name, imageUrl, price }: Product) => {
   }, [products, name]);
 
   useEffect(() => {
-    const itemInWish = products.find((productItem: { name: string; }) => productItem.name === name);
+    const itemInWish = wishlist.find((productItem: { name: string; }) => productItem.name === name);
     
     if (itemInWish) {
       setIsInWish(true);
@@ -30,7 +30,7 @@ export const ProductCard = ({ name, imageUrl, price }: Product) => {
       setIsInWish(false);
     }
 
-  }, [products, name]);
+  }, [wishlist, name]);
   
   const handleCartClick = () => {
     const productItem = {name, imageUrl, price};
@@ -46,10 +46,10 @@ export const ProductCard = ({ name, imageUrl, price }: Product) => {
   const handleWishClick = () => {
     const productItem = {name, imageUrl, price};
     if(isInWish){
-      removeItem(productItem);
+      removeWishlist(productItem);
       setIsInWish(false);
     } else{
-      addToCart(productItem);
+      addWishlist(productItem);
       setIsInWish(true);
     }
   }

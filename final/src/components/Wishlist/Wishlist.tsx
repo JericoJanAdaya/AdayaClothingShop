@@ -5,12 +5,19 @@ import { ProductCard } from "../ProductCard";
 import { ProductsWrapper, Title } from "./Wishlist.styled";
 
 export const Wishlist = () => {
-  const { products, total } = useContext(ShopContext);
+  const { wishlist, totalWishlist } = useContext(ShopContext);
+
+  function getWishlistTotal() {
+    var wishlistTotal = 0;
+    wishlist.forEach((product) => (wishlistTotal += product.price));
+    return wishlistTotal;
+  }
+
   return (
     <>
-      <Title>Your wishlist total cost is {total}.00$</Title>
+      <Title>Your wishlist total cost is {getWishlistTotal()}.00$</Title>
       <ProductsWrapper>
-        {products.map((productItem: Product, index) => (
+        {wishlist.map((productItem: Product, index) => (
           <ProductCard {...productItem} key={index} />
         ))}
       </ProductsWrapper>

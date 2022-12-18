@@ -8,7 +8,7 @@ export const Cart = () => {
   const { products, total } = useContext(ShopContext);
   return (
     <>
-      <Title>Your cart totalCost is {total}.00$</Title>
+      <Title>Your cart total cost is {total}.00$</Title>
       <ProductsWrapper>
         {products.map((productItem: Product, index) => (
           <ProductCard {...productItem} key={index} />
