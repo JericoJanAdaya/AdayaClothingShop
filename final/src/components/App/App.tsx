@@ -59,7 +59,6 @@ export const App = () => {
   };
   
   const value = {
-    totalWishlist: state.totalWishlist,
     total: state.total,    
     wishlist: state.wishlist,
     products: state.products,
