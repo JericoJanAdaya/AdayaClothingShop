@@ -20,7 +20,7 @@ export const Cart = () => {
     );
     return totalCart;
   }
-  
+
   return (
     <>
       <TitleContainer>

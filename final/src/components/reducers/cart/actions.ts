@@ -5,38 +5,32 @@ import { Product } from "../../../models/Product";
     REMOVE_WISHLIST = 'removeWishlist',
     ADD = 'addProduct',
     REMOVE = 'removeProduct',
-    UPDATE = 'updateTotal',
     UPDATE_CART = 'updateCart'
   }
   
   export type ShopAction = {
     type: ShopActionType;
-    payload: any;
+    payload: Product[];
   };
 
-  export const add_Wishlist = (wishlist: Product): ShopAction => ({
+  export const add_Wishlist = (wishlist: Product[]): ShopAction => ({
     type: ShopActionType.ADD_WISHLIST,
     payload: wishlist,
   });
 
-  export const remove_Wishlist = (wishlist: Product): ShopAction => ({
+  export const remove_Wishlist = (wishlist: Product[]): ShopAction => ({
     type: ShopActionType.REMOVE_WISHLIST,
     payload: wishlist,
   });
   
-  export const addProduct = (productItem: Product): ShopAction => ({
+  export const addProduct = (productItem: Product[]): ShopAction => ({
     type: ShopActionType.ADD,
     payload: productItem,
   });
   
-  export const removeProduct = (productItem: Product): ShopAction => ({
+  export const removeProduct = (productItem: Product[]): ShopAction => ({
     type: ShopActionType.REMOVE,
     payload: productItem,
-  });
-
-  export const updateTotal = (total: number): ShopAction => ({
-    type: ShopActionType.UPDATE,
-    payload: total,
   });
 
   export const updateCart = (productItem: Product[]): ShopAction => ({

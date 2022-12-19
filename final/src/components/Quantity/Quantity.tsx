@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { Field, Title, Wrapper } from ".";
 import { ShopContext, ShopDispatchContext } from "../contexts";
 import { updateCart } from "../reducers/cart";
+import { Menu } from "../Menu";
 
 export const Quantity = () => {
   const { products } = useContext(ShopContext);
@@ -45,6 +46,12 @@ export const Quantity = () => {
   return (
     <Wrapper>
       <Title>Quantity of</Title>
+      <Menu
+        isOpen={isOpen}
+        selected={selected}
+        toggleOpen={toggleOpen}
+        handleSelect={handleSelect}
+      ></Menu>
       <Title>:</Title>
       <Field
         type="number"
