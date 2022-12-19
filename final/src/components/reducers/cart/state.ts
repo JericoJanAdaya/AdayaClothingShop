@@ -1,15 +1,11 @@
 import { Product } from "../../../models";
 
-export type ShopState = {
-    products: Product[],
-    total: number,
-    addToCart: any,
-    removeItem: any
-}
+type Shop = {
+    products: Product[];
+    wishlist: Product[];
+};
 
-export const initialState = {
+export const ShopState: Shop = {
     products: [],
-    total: 0,
-    addToCart: null,
-    removeItem: null,
-}
+    wishlist: [],
+};
