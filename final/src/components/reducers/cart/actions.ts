@@ -6,18 +6,13 @@ import { Product } from "../../../models/Product";
     ADD = 'addProduct',
     REMOVE = 'removeProduct',
     UPDATE = 'updateTotal',
-    UPDATE_WISH = 'updateWish'
+    UPDATE_CART = 'updateCart'
   }
   
   export type ShopAction = {
     type: ShopActionType;
     payload: any;
   };
-
-  export const updateWish = (totalWishlist: number): ShopAction => ({
-    type: ShopActionType.UPDATE_WISH,
-    payload: totalWishlist,
-  });
 
   export const add_Wishlist = (wishlist: Product): ShopAction => ({
     type: ShopActionType.ADD_WISHLIST,
@@ -42,4 +37,9 @@ import { Product } from "../../../models/Product";
   export const updateTotal = (total: number): ShopAction => ({
     type: ShopActionType.UPDATE,
     payload: total,
+  });
+
+  export const updateCart = (productItem: Product[]): ShopAction => ({
+    type: ShopActionType.UPDATE_CART,
+    payload: productItem,
   });

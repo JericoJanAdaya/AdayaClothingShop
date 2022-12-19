@@ -6,22 +6,15 @@ import { Wishlist } from "../Wishlist";
 import { Products } from "../Products";
 import { ShopContext } from "../contexts/ShopContext";
 import { useReducer } from "react";
-import { addProduct, initialState, removeProduct, shopReducer, updateTotal, remove_Wishlist, add_Wishlist, updateWish } from "../reducers/cart";
+import { addProduct, initialState, removeProduct, shopReducer, updateTotal, remove_Wishlist, add_Wishlist } from "../reducers/cart";
 import { Product } from "../../models";
 
 export const App = () => {
   const [state, dispatch] = useReducer(shopReducer, initialState);
 
-  const updateWishlist = (wishlist: [] = []) => {
-    let wishlistCost = 0;
-    wishlist.forEach((productItem: {price: number}) => (wishlistCost += productItem.price));
-
-    dispatch(updateWish(wishlistCost));
-  };
-
   const updatePrice = (products: [] = []) => {
     let totalCost = 0;
-    products.forEach((productItem: { price: number; }) => (totalCost += productItem.price));
+    products.forEach((productItem: { price: number; quantity: number;}) => (totalCost += productItem.price * productItem.quantity));
 
     dispatch(updateTotal(totalCost));
   };
@@ -46,14 +39,12 @@ export const App = () => {
     const updatedWishlist = state.wishlist.filter(
       (currentProduct: Product) => currentProduct.name !== productItem.name
     );
-    updateWishlist(updatedWishlist);
 
     dispatch(remove_Wishlist(updatedWishlist));
   };
 
   const addWishlist = (productItem: Product) => {
     const updatedWishlist = state.wishlist.concat(productItem);
-    updateWishlist(updatedWishlist);
 
     dispatch(add_Wishlist(updatedWishlist));
   };
