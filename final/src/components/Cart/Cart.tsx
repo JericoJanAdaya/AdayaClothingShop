@@ -4,6 +4,9 @@ import { Product } from "../../models";
 import { ProductCard } from "../ProductCard";
 import { ProductsWrapper, Title, TitleContainer } from "./Cart.styled";
 import { Quantity } from "../Quantity";
+import { Link, Route, Routes } from "react-router-dom";
+import { CheckoutButton } from "./Cart.styled";
+import { Checkout } from "../Checkout";
 
 export const Cart = () => {
   const { products } = useContext(ShopContext);
@@ -33,6 +36,17 @@ export const Cart = () => {
           <ProductCard {...productItem} key={index} />
         ))}
       </ProductsWrapper>
+      
+      <Link to="/checkout" style={{ textDecoration: 'none' }}>
+        <CheckoutButton>
+          Check Out
+        </CheckoutButton>
+      </Link>
+
+      <Routes>
+        <Route path="/checkout" element={<Checkout />} />
+      </Routes>
+      
     </>
   );
 };

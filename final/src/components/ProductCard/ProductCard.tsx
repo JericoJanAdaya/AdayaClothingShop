@@ -1,4 +1,4 @@
-import { AddButton, SubTitle,TextContainer,Title,Wrapper,AddButton1,} from './ProductCard.styled';
+import { AddButton, SubTitle, TextContainer, Title, Wrapper, AddButton1,} from './ProductCard.styled';
 import { BsFillBookmarkPlusFill, BsFillBookmarkDashFill } from "react-icons/bs";
 
 import { useState, useEffect, useContext } from 'react';
